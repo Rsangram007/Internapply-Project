@@ -61,6 +61,7 @@ const getCollegeDetails = async (req, res) => {
     const clgName = req.query;
     let { collegeName } = req.query;
 
+     console.log(collegeName);
     if (!collegeName)return res.status(400).send({ status: false, msg: "CollgeName is required" });
 
     if (Object.keys(clgName).length > 1)
@@ -75,7 +76,8 @@ const getCollegeDetails = async (req, res) => {
     if (!isValidName(collegeName))
       return res.status(400).send({status: false,msg: "Invalid-CollegeName-Try name with lowerCase abbrivation"});
 
-     const collegename = await collegeModel.findOne({$or:[{ name: collegeName },{fullName:collegeName}]});
+
+  const collegename = await collegeModel.findOne({ name: collegeName });
 
     if (!collegename)return res.status(404).send({ status: false, msg: "This College not Found in the Collection"});
 
