@@ -16,7 +16,7 @@ app.use('/',route)
 
 app.use(function (req, res) {
     var err = new Error('Not Found');
-    // err.status =;
+
     return res.status(400).send({status : false, msg : "path not found"})
     });
 

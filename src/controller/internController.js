@@ -17,7 +17,7 @@ const createIntern = async (req, res) => {
 
 
         let validString = /^[a-zA-Z]+([_ -]?[a-zA-Z])*$/
-        if (!validString.test(name)) { return res.status(400).send({ status: false, msg: "name should be in string " }) }
+        if (!validString.test(name)) { return res.status(400).send({ status: false, msg: "name should be In A-Z or a-z " }) }
 
 
         let validEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/

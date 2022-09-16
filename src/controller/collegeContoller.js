@@ -88,11 +88,11 @@ const getCollegeDetails = async (req, res) => {
       name: name,
       fullName: fullName,
       logoLink: logoLink,
-      interns: intern.length? intern: { msg: "0 application from this collge" }};
+      interns: intern.length ? intern: { msg: "0 application from this collge" }};
 
     return res.status(200).send({ status: true, data: data })}
 
-  catch (err) {return res.status(500).send({ status: false, msg: err.message }); }
+  catch (err) {return res.status(500).send({ status: false, message: err.message }); }
 };
 
 
