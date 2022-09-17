@@ -79,7 +79,7 @@ const getCollegeDetails = async (req, res) => {
 
   const collegename = await collegeModel.findOne({ name: collegeName });
 
-    if (!collegename)return res.status(404).send({ status: false, msg: "This College not Found in the Collection"});
+    if (!collegename)return res.status(404).send({ status: false, message: "This College not Found in the Collection"});
 
     const { name, fullName, logoLink } = collegename;
 
