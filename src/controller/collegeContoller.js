@@ -90,7 +90,7 @@ const getCollegeDetails = async (req, res) => {
       name: name,
       fullName: fullName,
       logoLink: logoLink,
-      interns: intern.length ? intern: { msg: "0 application from this collge" }};
+      interns: intern.length ? intern.length: { msg: "0 application from this collge" }};
 
     return res.status(200).send({ status: true, data: data })}
 

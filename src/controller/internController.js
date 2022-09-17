@@ -24,9 +24,10 @@ const createIntern = async (req, res) => {
         if (!validEmail.test(email)) {
             return res.status(400).send({ status: false, msg: "please enter email in  correct format  e.g  xyz@abc.com" })
         }
+    
         let emailExist = await internsModel.findOne({ email: email })
 
-        if (emailExist) { return res.status(400).send({ status: false, msg: `This ${email} email is already exits` }) }
+        if (emailExist) { return res.status(400).send({ status: false, msg: `This ${email} email is already exits pls sign In` }) }
 
 
         let validNumber = /^[6-9]{1}[0-9]{9}$/
