@@ -61,7 +61,8 @@ const getCollegeDetails = async (req, res) => {
     const clgName = req.query;
     let { collegeName } = req.query;
 
-    if (!collegeName)return res.status(400).send({ status: false, msg: "CollgeName is required" });
+     console.log(collegeName);
+    if (!collegeName)return res.status(400).send({ status: false, message: "CollgeName is required" });
 
     if (Object.keys(clgName).length > 1)
       return res.status(400).send({ status: false, msg: "enter single query" });
@@ -75,9 +76,10 @@ const getCollegeDetails = async (req, res) => {
     if (!isValidName(collegeName))
       return res.status(400).send({status: false,msg: "Invalid-CollegeName-Try name with lowerCase abbrivation"});
 
-     const collegename = await collegeModel.findOne({$or:[{ name: collegeName },{fullName:collegeName}]});
 
-    if (!collegename)return res.status(404).send({ status: false, msg: "This College not Found in the Collection"});
+  const collegename = await collegeModel.findOne({ name: collegeName });
+
+    if (!collegename)return res.status(404).send({ status: false, message: "This College not Found in the Collection"});
 
     const { name, fullName, logoLink } = collegename;
 
@@ -88,11 +90,11 @@ const getCollegeDetails = async (req, res) => {
       name: name,
       fullName: fullName,
       logoLink: logoLink,
-      interns: intern.length? intern: { msg: "0 application from this collge" }};
+      interns: intern.length ? intern.length: { msg: "0 application from this collge" }};
 
     return res.status(200).send({ status: true, data: data })}
 
-  catch (err) {return res.status(500).send({ status: false, msg: err.message }); }
+  catch (err) {return res.status(500).send({ status: false, message: err.message }); }
 };
 
 

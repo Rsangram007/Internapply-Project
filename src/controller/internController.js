@@ -17,16 +17,17 @@ const createIntern = async (req, res) => {
 
 
         let validString = /^[a-zA-Z]+([_ -]?[a-zA-Z])*$/
-        if (!validString.test(name)) { return res.status(400).send({ status: false, msg: "name should be in string " }) }
+        if (!validString.test(name)) { return res.status(400).send({ status: false, msg: "name should be In A-Z or a-z " }) }
 
 
         let validEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
         if (!validEmail.test(email)) {
             return res.status(400).send({ status: false, msg: "please enter email in  correct format  e.g  xyz@abc.com" })
         }
+    
         let emailExist = await internsModel.findOne({ email: email })
 
-        if (emailExist) { return res.status(400).send({ status: false, msg: `This ${email} email is already exits` }) }
+        if (emailExist) { return res.status(400).send({ status: false, msg: `This ${email} email is already exits pls sign In` }) }
 
 
         let validNumber = /^[6-9]{1}[0-9]{9}$/
