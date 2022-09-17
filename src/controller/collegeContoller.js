@@ -62,7 +62,7 @@ const getCollegeDetails = async (req, res) => {
     let { collegeName } = req.query;
 
      console.log(collegeName);
-    if (!collegeName)return res.status(400).send({ status: false, msg: "CollgeName is required" });
+    if (!collegeName)return res.status(400).send({ status: false, message: "CollgeName is required" });
 
     if (Object.keys(clgName).length > 1)
       return res.status(400).send({ status: false, msg: "enter single query" });
